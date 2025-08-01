@@ -3,94 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicons/favicon.png" type="image/png">
-    <title>Главная <q>Тест</q></title>
+    <title>Форма сбора данных</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        fieldset { margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        legend { font-weight: bold; padding: 0 5px; }
+        button { background: #28a745; color: white; border: none; padding: 10px 15px; cursor: pointer; }
+        button:hover { background: #218838; }
+        .hidden { display: none; }
+    </style>
 </head>
 <body>
-    <h1><b><q><s>Тут всякое разное!</s></q></b></h1>
+    <h1>Введите Ваши данные</h1>
+    <img src="media/images/form.jpg" alt="Форма" width="450" height="350">
 
-    <iframe 
-        width="560" height="315" 
-        src="https://www.youtube.com/embed/UhhfcKk00u0?si=sWP2_PQPnrA5mwXO" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen
-    ></iframe>
+    <form id="myForm">
+        <fieldset>
+            <legend>Имя</legend>
+            <label for="login">Имя:</label>
+            <input id="login" name="name" type="text" required>
+        </fieldset>
 
-    <img 
-    src="media/images/koala.jpg" 
-    alt="Пушистая коала" 
-    width="350" height="250"
-    />
+        <fieldset>
+            <legend>Фамилия</legend>
+            <label for="family">Фамилия:</label>
+            <input id="family" name="surname" type="text" required>
+        </fieldset>
 
-    <p>
-        <iframe 
-        src="https://yandex.ru/map-widget/v1/?um=constructor%3A0da37d59bef400aebc783c1a1d3a8d2048da62b44fcf67f2a4e0042906bedb40&amp;source=constructor" 
-        width="363" height="300" 
-        frameborder="0"
-        ></iframe>
-    </p>
-    
-    <div style="display: flex; gap: 5px;">
-        <div style="display: flex; flex-direction: column; gap: 5px;">
-            <iframe 
-            width="560" height="315" 
-            src="https://www.youtube.com/embed/6PL2TqBdz0I?si=BqtOw5QR4-nHCyyH&amp;start=319" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-            ></iframe>
+        <fieldset>
+            <legend>Возраст</legend>
+            <label for="age">Дата рождения:</label>
+            <input id="age" name="birthdate" type="date" required>
+        </fieldset>
 
-            <iframe 
-            width="560" height="315" 
-            src="https://www.youtube.com/embed/PEQ3i9q3ez8?si=_n3nCUwh-deYeFXH" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen
-            ></iframe>
-        </div>
+        <fieldset>
+            <legend>Город</legend>
+            <label for="city">Ваш город:</label>
+            <select name="city" id="city">
+                <option value="Москва">Москва</option>
+                <option value="Тула" selected>Тула</option>
+                <option value="other">другое</option>
+            </select>
+        </fieldset>
 
-        <iframe 
-        src="https://ru.wikipedia.org/wiki/YouTube" 
-        frameborder="0"
-        width="940" height="630" 
-        ></iframe>
-    </div>
-    
+        <fieldset id="otherCityField" class="hidden">
+            <legend><q>Если выбрали другое</q> введите свой город</legend>
+            <textarea name="custom_city" id="other-city"></textarea>
+        </fieldset>
 
-    <code>
-        <pre>
-        #include <iostream>
-        using namespace std;
+        <fieldset>
+            <legend>Ваш пол</legend>
+            <p>
+                <input id="male" name="gender" type="radio" value="Мужской" checked>
+                <label for="male">Мужской</label>
+            </p>
+            <p>
+                <input id="female" name="gender" type="radio" value="Женский">
+                <label for="female">Женский</label>
+            </p>
+        </fieldset>
 
-        // Driver code
-        int main()
-        {
-            int Dividend, Quotient, Divisor, Remainder;
+        <fieldset>
+            <legend>Паспортные данные</legend>
+            <label for="data">Серия/номер:</label>
+            <input id="data" name="passport" type="text" required>
+        </fieldset>
 
-            cout &lt;&lt; "Enter Dividend & Divisor: ";
-            cin &gt;&gt; Dividend &gt;&gt; Divisor;
+        <fieldset>
+            <legend>Электронная почта</legend>
+            <label for="email">Почта:</label>
+            <input id="email" name="email" type="email" required>
+        </fieldset>
 
-            // Check for division by zero
-            if (Divisor == 0) {
-               cout &lt;&lt; "Error: Divisor cannot be zero." &lt;&lt; endl;
+        <fieldset>
+            <legend>Комментарий</legend>
+            <textarea name="comment"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <input id="confirm" name="agreement" type="checkbox" required>
+            <label for="confirm">Я согласен со всеми условиями</label>
+            <button type="submit">Отправить все данные</button>
+        </fieldset>
+    </form>
+
+    <script>
+        // Показываем поле для другого города при выборе "другое"
+        document.getElementById('city').addEventListener('change', function() {
+            const otherCityField = document.getElementById('otherCityField');
+            otherCityField.classList.toggle('hidden', this.value !== 'other');
+        });
+
+        // Обработка отправки формы
+        document.getElementById('myForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Собираем данные
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Форматируем сообщение на русском
+            let message = `📌 <b>Новая заявка с сайта:</b>\n\n`;
+            
+            // Русские названия полей
+            const fieldLabels = {
+                name: 'Имя',
+                surname: 'Фамилия', 
+                birthdate: 'Дата рождения',
+                city: 'Город',
+                custom_city: 'Указанный город',
+                gender: 'Пол',
+                passport: 'Паспортные данные',
+                email: 'Электронная почта',
+                comment: 'Комментарий',
+                agreement: 'Согласие получено'
+            };
+            
+            // Обработка специальных полей
+            if (data.city === 'other' && data.custom_city) {
+                message += `<b>Город:</b> ${data.custom_city}\n`;
             } else {
-            Quotient = Dividend / Divisor;
-            Remainder = Dividend % Divisor;
-
-            cout &lt;&lt; "The Quotient = " &lt;&lt; Quotient &lt;&lt; endl;
-            cout &lt;&lt; "The Remainder = " &lt;&lt; Remainder &lt;&lt; endl;
+                message += `<b>Город:</b> ${data.city}\n`;
             }
-        return 0;
-        }
-        </pre>
-    </code>
+            
+            // Добавляем остальные поля
+            const fieldsToShow = ['name', 'surname', 'birthdate', 'gender', 'passport', 'email', 'comment'];
+            fieldsToShow.forEach(field => {
+                if (data[field]) {
+                    message += `<b>${fieldLabels[field]}:</b> ${data[field]}\n`;
+                }
+            });
+            
+            // Добавляем согласие
+            message += `<b>${fieldLabels.agreement}:</b> ${data.agreement ? 'Да' : 'Нет'}`;
 
+            // Отправляем в Telegram (ЗАМЕНИТЕ НА СВОИ ДАННЫЕ!)
+            const botToken = '8436213222:AAG52yLXd-oPa124kDHCIgf2Tbh-sKsVFd4';
+            const chatId = '6003377664';
+            
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    }),
+                });
+
+                const result = await response.json();
+                
+                if (result.ok) {
+                    alert('Данные успешно отправлены!');
+                    e.target.reset();
+                    document.getElementById('otherCityField').classList.add('hidden');
+                } else {
+                    alert('Ошибка отправки: ' + (result.description || 'неизвестная ошибка'));
+                }
+            } catch (error) {
+                alert('Ошибка сети: ' + error.message);
+                console.error(error);
+            }
+        });
+    </script>
 </body>
 </html>
